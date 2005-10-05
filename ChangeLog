@@ -1,0 +1,3 @@
+2005-10-05  Kevin E. Martin  <kem-at-freedesktop-dot-org>
+
+	* Makefile.am: Add constype.man to EXTRA_DIST even when not building

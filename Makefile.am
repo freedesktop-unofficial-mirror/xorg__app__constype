@@ -34,9 +34,7 @@ bin_PROGRAMS = constype
 
 constype_SOURCES = constype.c
 
-EXTRA_DIST = constype.man
-
-man1_MANS = constype.1
+man1_MANS = constype.man
 
 CLEANFILES = $(man1_MANS)
 
@@ -68,3 +66,5 @@ all-local:
 	@echo "constype not supported on this platform"
 
 endif
+
+EXTRA_DIST = constype.man
