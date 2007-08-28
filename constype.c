@@ -41,27 +41,10 @@ style.
 
 #ifdef HAVE_CONFIG_H
 # include "config.h"
-#else
-# if defined(SVR4) || defined(CSRG_BASED)
-#  define STDC_HEADERS 1
-# endif
-# if defined(SVR4) || defined(__bsdi__)
-#  define HAVE_SYS_FBIO_H 1
-#  if defined(SVR4) && defined(sun)
-#   define HAVE_SYS_VISUAL_IO_H 1
-#  endif
-# elif defined(CSRG_BASED)
-#  define HAVE_MACHINE_FBIO_H
-# endif
 #endif
 
 #include <stdio.h>
-#ifdef STDC_HEADERS
 #include <string.h>
-#else
-/*  SunOS  */
-#include <strings.h>
-#endif
 #include <unistd.h>
 
 static int wu_fbid(const char *devname, char **fbname, int *fbtype);
