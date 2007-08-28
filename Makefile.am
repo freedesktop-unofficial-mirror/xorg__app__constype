@@ -60,6 +60,14 @@ CPP_FILES_FLAGS = -D__xorgversion__="\"$(XORGRELSTRING)\" \"$(XORGMANNAME)\""
 .man.1:
 	$(RAWCPP) $(RAWCPPFLAGS) $(CPP_FILES_FLAGS) < $< | $(CPP_SED_MAGIC) > $@
 
+if LINT
+ALL_LINT_FLAGS=$(LINT_FLAGS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+                $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS)
+
+lint:
+	$(LINT) $(ALL_LINT_FLAGS) $(constype_SOURCES)
+endif LINT
+
 else
 
 all-local:
