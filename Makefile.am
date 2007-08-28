@@ -34,31 +34,38 @@ bin_PROGRAMS = constype
 
 constype_SOURCES = constype.c
 
-man1_MANS = constype.man
+appman_PRE = constype.man
 
-CLEANFILES = $(man1_MANS)
+appmandir = $(APP_MAN_DIR)
 
-all-local: $(man1_MANS)
+appman_DATA = $(appman_PRE:man=@APP_MAN_SUFFIX@)
 
-# Rules for generating files using the C pre-processor
-# (Replaces CppFileTarget from Imake)
+EXTRA_DIST = $(appman_PRE)
+CLEANFILES = $(appman_DATA)
 
 SED = sed
 
-SUFFIXES = .1 .man
-
-# Delete line numbers from the cpp output (-P is not portable, I guess).
-
-CPP_SED_MAGIC = $(SED) -e '/^\#  *[0-9][0-9]*  *.*$$/d' \
-                       -e '/^\#line  *[0-9][0-9]*  *.*$$/d'
-
+# Strings to replace in man pages
 XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
 
-CPP_FILES_FLAGS = -D__xorgversion__="\"$(XORGRELSTRING)\" \"$(XORGMANNAME)\""
+MAN_SUBSTS = \
+        -e 's|__vendorversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
+        -e 's|__xorgversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
+        -e 's|__xservername__|Xorg|g' \
+        -e 's|__xconfigfile__|xorg.conf|g' \
+        -e 's|__projectroot__|$(prefix)|g' \
+        -e 's|__apploaddir__|$(appdefaultdir)|' \
+        -e 's|__appmansuffix__|$(APP_MAN_SUFFIX)|g' \
+        -e 's|__libmansuffix__|$(LIB_MAN_SUFFIX)|g' \
+        -e 's|__adminmansuffix__|$(ADMIN_MAN_SUFFIX)|g' \
+        -e 's|__miscmansuffix__|$(MISC_MAN_SUFFIX)|g' \
+        -e 's|__filemansuffix__|$(FILE_MAN_SUFFIX)|g'
 
-.man.1:
-	$(RAWCPP) $(RAWCPPFLAGS) $(CPP_FILES_FLAGS) < $< | $(CPP_SED_MAGIC) > $@
+SUFFIXES = .$(APP_MAN_SUFFIX) .man
+
+.man.$(APP_MAN_SUFFIX):
+	$(SED) $(MAN_SUBSTS) < $< > $@
 
 if LINT
 ALL_LINT_FLAGS=$(LINT_FLAGS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \

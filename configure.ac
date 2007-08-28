@@ -53,6 +53,7 @@ AC_CHECK_HEADERS([sys/visual_io.h sys/fbio.h machine/fbio.h sun/fbio.h],
 AM_CONDITIONAL(BUILD_CONSTYPE, [test x$BUILD_CONSTYPE = xyes])
 
 XORG_WITH_LINT
+XORG_MANPAGE_SECTIONS
 XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile])

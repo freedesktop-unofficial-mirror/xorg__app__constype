@@ -2,7 +2,7 @@
 .\" $XdotOrg: $
 .\" $XFree86$
 .\"
-.TH CONSTYPE 1 __xorgversion__
+.TH CONSTYPE __appmansuffix__ __xorgversion__
 .SH NAME
 constype \- print type of Sun console
 .SH SYNOPSIS
