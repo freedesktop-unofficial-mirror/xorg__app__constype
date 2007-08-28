@@ -169,7 +169,14 @@ wu_fbid(const char* devname, char** fbname, int* fbtype)
 	struct vis_identifier fbid;
 #endif
 
-	if ( (fd = open(devname, O_RDWR, 0)) == -1 ) {
+
+#ifdef sun
+# define DEV_OPEN_MODE O_RDONLY
+#else
+# define DEV_OPEN_MODE O_RDWR
+#endif
+
+    	if ( (fd = open(devname, DEV_OPEN_MODE, 0)) == -1 ) {
 	    *fbname = "unable to open fb";
 	    return 2;
 	}
