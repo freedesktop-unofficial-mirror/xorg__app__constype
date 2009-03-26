@@ -149,7 +149,7 @@ wu_fbid(const char* devname, char** fbname, int* fbtype)
 	int fd, ioctl_ret;
 #ifdef VIS_GETIDENTIFIER
 	int vistype;
-	struct vis_identifier fbid;
+	static struct vis_identifier fbid;
 #endif
 
 
