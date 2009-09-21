@@ -40,11 +40,13 @@ AM_CONFIG_HEADER(config.h)
 
 # Require xorg-macros version 1.1.0 or newer for XORG_WITH_LINT macro
 m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.1 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.1)
+XORG_MACROS_VERSION(1.3)
 
 AC_PROG_CC
 AC_PROG_INSTALL
 XORG_PROG_RAWCPP
+
+XORG_DEFAULT_OPTIONS
 
 AC_HEADER_STDC
 AC_CHECK_HEADERS([sys/visual_io.h sys/fbio.h machine/fbio.h sun/fbio.h],
@@ -53,7 +55,5 @@ AC_CHECK_HEADERS([sys/visual_io.h sys/fbio.h machine/fbio.h sun/fbio.h],
 AM_CONDITIONAL(BUILD_CONSTYPE, [test x$BUILD_CONSTYPE = xyes])
 
 XORG_WITH_LINT
-XORG_MANPAGE_SECTIONS
-XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile])
