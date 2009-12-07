@@ -46,6 +46,7 @@ style.
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <errno.h>
 
 static int wu_fbid(const char *devname, char **fbname, int *fbtype);
 
@@ -160,6 +161,8 @@ wu_fbid(const char* devname, char** fbname, int* fbtype)
 #endif
 
     	if ( (fd = open(devname, DEV_OPEN_MODE, 0)) == -1 ) {
+	    fprintf(stderr, "unable to open %s: %s\n",
+		    devname, strerror(errno));
 	    *fbname = "unable to open fb";
 	    return 2;
 	}
@@ -178,6 +181,8 @@ wu_fbid(const char* devname, char** fbname, int* fbtype)
 	    ioctl_ret = ioctl(fd, FBIOGTYPE, &fbattr.fbtype);
 	close(fd);
 	if ( ioctl_ret == -1 ) {
+	    fprintf(stderr, "FBIO ioctls failed on %s: %s\n",
+		    devname, strerror(errno));
 	    *fbname = "ioctl on fb failed";
 	    return 2;
 	}
