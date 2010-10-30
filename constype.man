@@ -1,6 +1,3 @@
-.\" $Xorg: constype.man,v 1.3 2000/08/17 19:48:29 cpqbld Exp $
-.\" $XdotOrg: $
-.\" $XFree86$
 .\"
 .TH CONSTYPE __appmansuffix__ __xorgversion__
 .SH NAME
