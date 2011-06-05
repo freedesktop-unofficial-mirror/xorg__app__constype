@@ -34,9 +34,6 @@ AM_CONFIG_HEADER(config.h)
 m4_ifndef([XORG_MACROS_VERSION],
           [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
 XORG_MACROS_VERSION(1.8)
-
-XORG_PROG_RAWCPP
-
 XORG_DEFAULT_OPTIONS
 
 AC_HEADER_STDC
