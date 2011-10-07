@@ -61,7 +61,7 @@ another error occurred.
 Not tested on all frame buffer types
 .SH "SEE ALSO"
 .BR visual_io (7I)
-.SH COPYRIGHT 
+.SH COPYRIGHT
 Copyright 1988, SRI
 .PP
 Permission to use, copy, modify, and distribute this software and its

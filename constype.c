@@ -1,6 +1,6 @@
 /* consoletype - utility to print out string identifying Sun console type
  *
- * Copyright 1988 SRI 
+ * Copyright 1988 SRI
  *
  * Permission to use, copy, modify, and distribute this software and its
  * documentation for any purpose and without fee is hereby granted, provided
@@ -78,7 +78,7 @@ main (int argc, char **argv)
 # include <sys/fbio.h>
 # ifdef HAVE_SYS_VISUAL_IO_H
 /* VIS_GETIDENTIFIER ioctl added in Solaris 2.3 */
-#  include <sys/visual_io.h> 
+#  include <sys/visual_io.h>
 # endif
 #else
 # ifndef HAVE_MACHINE_FBIO_H
@@ -89,7 +89,7 @@ main (int argc, char **argv)
 #endif
 
 /* Sun doesn't see fit to update <sys/fbio.h> to reflect the addition
- * of the TCX 
+ * of the TCX
  */
 #define XFBTYPE_TCX		21
 #define XFBTYPE_LASTPLUSONE	22
@@ -109,30 +109,30 @@ static const char *decode_fb[] = {
 	"gp2",
 	"cg5", "cg3",
 	"cg8", "cg4",
-	"nsA", "nsB", "nsC", 
+	"nsA", "nsB", "nsC",
 #ifdef FBTYPE_SUNFAST_COLOR
-	"gx/cg6", 
+	"gx/cg6",
 #endif
 #ifdef FBTYPE_SUNROP_COLOR
-	"rop", 
+	"rop",
 #endif
 #ifdef FBTYPE_SUNFB_VIDEO
-	"vid", 
+	"vid",
 #endif
 #ifdef FBTYPE_SUNGIFB
-	"gifb", 
+	"gifb",
 #endif
 #ifdef FBTYPE_SUNGPLAS
-	"plas", 
+	"plas",
 #endif
 #ifdef FBTYPE_SUNGP3
-	"gp3/cg12", 
+	"gp3/cg12",
 #endif
 #ifdef FBTYPE_SUNGT
-	"gt", 
+	"gt",
 #endif
 #ifdef FBTYPE_SUNLEO
-	"leo/zx", 
+	"leo/zx",
 #endif
 #ifdef FBTYPE_MDICOLOR
 	"mdi/cg14",
