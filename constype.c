@@ -44,13 +44,13 @@ style.
 #include <unistd.h>
 #include <errno.h>
 
-static int wu_fbid(const char *devname, char **fbname, int *fbtype);
+static int wu_fbid(const char *devname, const char **fbname, int *fbtype);
 
 int
 main (int argc, char **argv)
 {
     int fbtype = -1;
-    char *fbname, *dev;
+    const char *fbname, *dev;
     int print_num = 0;
     int error;
 
@@ -103,7 +103,7 @@ main (int argc, char **argv)
 	 *	FBTYPE_SUNxGP		becomes gpx
 	 *	FBTYPE_NOTSUN[1-9]	becomes ns[A-J]
 	 */
-static char *decode_fb[] = {
+static const char *decode_fb[] = {
 	"bw1", "cg1",
 	"bw2", "cg2",
 	"gp2",
@@ -140,7 +140,7 @@ static char *decode_fb[] = {
 	};
 
 static int
-wu_fbid(const char* devname, char** fbname, int* fbtype)
+wu_fbid(const char* devname, const char** fbname, int* fbtype)
 {
 	struct fbgattr fbattr;
 	int fd, ioctl_ret;
