@@ -13,17 +13,7 @@ constype \- print type of Sun console
 .B constype
 prints on the standard output the Sun code for the type of display
 that the specified device is.
-The types output include these:
-.sp 2
-.in +0.5i
-.nf
-bw?	Black and White, where ? is 1-4. (eg) 3-50s are bw2
-cg?	Colour Graphics display, where ? is 1-6, 8, 12
-gp?	Optional Graphics Processor board, where ? is 1-2
-ns?	Not Sun display \(em where ? is A-J
-.fi
-.in -0.5i
-.sp 2
+.LP
 If the OS and device support the VIS_GETIDENTIFIER ioctl, the value
 returned from the ioctl is the value printed by constype.   Sample types
 output for these include:
@@ -33,6 +23,18 @@ output for these include:
 SUNWffb        Sun Creator 3D (ffb) Graphics Accelerator
 SUNWm64        Sun PGX8, PGX24 or PGX64 Frame Buffer
 SUNWtext       Generic vgatext console for Solaris x86 graphics devices without specific kernel drivers
+.fi
+.in -0.5i
+.sp 2
+Otherwise, the older fbio identification methods are used, for which
+the types output include these:
+.sp 2
+.in +0.5i
+.nf
+bw?	Black and White, where ? is 1-4. (eg) 3-50s are bw2
+cg?	Colour Graphics display, where ? is 1-6, 8, 12
+gp?	Optional Graphics Processor board, where ? is 1-2
+ns?	Not Sun display \(em where ? is A-J
 .fi
 .in -0.5i
 .sp 2
