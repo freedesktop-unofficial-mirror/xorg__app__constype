@@ -25,7 +25,7 @@ dnl Process this file with autoconf to create configure.
 # Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([constype], [1.0.4],
-	[https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],constype)
+	[https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], [constype])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 
@@ -47,4 +47,5 @@ AM_CONDITIONAL(BUILD_CONSTYPE, [test x$BUILD_CONSTYPE = xyes])
 
 XORG_WITH_LINT
 
-AC_OUTPUT([Makefile])
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
